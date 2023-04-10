@@ -1,29 +1,22 @@
 ### 项目名
 
-**蓝山双人考核 - 仿知乎**
+**web三人考核 - 仿知乎**
 
-### 前言
-
-​	和后端小伙伴做了这个项目之后，感觉自己还是有很多的不足，同时从这次考核中也学到了不少新知识。（做到后面简直想把前面写的代码都重构一遍，什么答辩💩）
-     进入项目记得先ctrl+shift+del清除缓冲，不然不确定是不是最新版本
 ### 参与成员
 
-- 前端 - 潘麒麟
-- 后端 - 邓卓
+- 前端 - 程越洋 吴坤淼
+- 后端 - 汪泽人
 
 #### [	前端项目部署服务器地址](http://zhihu.madeindz.work/)
 
 #### 	[后端部署地址](https://gogo.madeindz.work/)
 
-#### 			[前端Github仓库地址]([lanshanzhihu/zhihu at master · xiyueyezibile/lanshanzhihu (github.com)](https://github.com/xiyueyezibile/lanshanzhihu/tree/master/zhihu))
+#### 			[前端Github仓库地址]
 
-#### 	[后端Github仓库地址](https://github.com/Nihilism0/LanShan-zhihu)
+#### 	[后端Github仓库地址]
 
 #### 		[接口文档地址](https://console-docs.apipost.cn/preview/648a7969b340d643/bd974949c5b66514)
 
-### 项目上线时间
-
-​	2023年1月1日
 
 ### 技术栈😳
 
@@ -132,5 +125,4 @@
 
 ##### 文本编辑器没有自己封装
 
-1月17日
-add:修复了首页点赞功能有时失效问题，修复了我的主页界面样式错误问题
+
