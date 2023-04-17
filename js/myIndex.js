@@ -14,7 +14,7 @@ function tiaozhuanwenzhang(ID) {
 function removeshoucang(ID) {
   let formdata = new FormData()
   formdata.append('id', ID)
-  fetch('https://gogo.madeindz.work:443/api/collection/deletefavorites', {
+  fetch('http://43.136.232.175:3920/api/collection/deletefavorites', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -72,7 +72,7 @@ const myIndexMessage = document.querySelector('.myIndexMessage')
 //获取跳转编辑个人信息页面按钮
 const changeMyResourcebtn = document.querySelector('.myIndexxiala').querySelectorAll('button')[1]
 changeMyResourcebtn.addEventListener('click', () => {
-  window.location.href = 'https://zhihu.madeindz.work/html/myResource.html'
+  window.location.href = 'myResource.html'
 })
 //出现创建收藏夹界面
 createshoucang.addEventListener('click', () => {
@@ -102,7 +102,7 @@ hiddenshoucangFormbtns[1].addEventListener('click', (e) => {
     formdata.append('favoritesname', hiddenshoucangTitle.value.trim())
     formdata.append('describe', hiddenshoucangMessage.value.trim())
     formdata.append('private', private)
-    fetch('https://gogo.madeindz.work:443/api/collection/addfavorites', {
+    fetch('http://43.136.232.175:3920/api/collection/addfavorites', {
       method: 'post',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -122,7 +122,7 @@ hiddenshoucangFormbtns[1].addEventListener('click', (e) => {
 })
 window.addEventListener('load', () => {
   //获取用户信息
-  fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
+  fetch('http://43.136.232.175:3920/api/user/getuserinformation', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -134,14 +134,14 @@ window.addEventListener('load', () => {
         alert('登录过期')
         localStorage.removeItem('token')
         localStorage.removeItem('username')
-        window.location.href = 'https://zhihu.madeindz.work'
+        window.location.href = 'login.html'
       }
       if (res.information.headphoto != '') {
         myIndexImg.src = res.information.headphoto
       }
     })
   //渲染个人信息
-  fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
+  fetch('http://43.136.232.175:3920/api/user/getuserinformation', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -159,7 +159,7 @@ window.addEventListener('load', () => {
       console.log(err)
     })
   //渲染提问页面
-  fetch('https://gogo.madeindz.work:443/api/qa/qsubmited', {
+  fetch('http://43.136.232.175:3920/api/qa/qsubmited', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -171,7 +171,7 @@ window.addEventListener('load', () => {
         alert('登录过期')
         localStorage.removeItem('token')
         localStorage.removeItem('username')
-        window.location.href = 'https://zhihu.madeindz.work'
+        window.location.href = 'login.html'
       }
       console.log(res)
       myIndexBottomLeftTopLi[3].innerHTML = '提问 ' + res.message.length
@@ -180,7 +180,7 @@ window.addEventListener('load', () => {
       console.log(err)
     })
   //渲染文章页面
-  fetch('https://gogo.madeindz.work:443/api/article/articlesubmited', {
+  fetch('http://43.136.232.175:3920/api/article/articlesubmited', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -196,7 +196,7 @@ window.addEventListener('load', () => {
       console.log(err)
     })
   //渲染收藏页面
-  fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
+  fetch('http://43.136.232.175:3920/api/collection/seemyfavorites', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -246,7 +246,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
     } else if (i == 3) {
       myIndexBottomLefttiwen.style.display = 'block'
       //查看自己发布的问题
-      fetch('https://gogo.madeindz.work:443/api/qa/qsubmited', {
+      fetch('http://43.136.232.175:3920/api/qa/qsubmited', {
         method: 'get',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -258,7 +258,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
             alert('登录过期')
             localStorage.removeItem('token')
             localStorage.removeItem('username')
-            window.location.href = 'https://zhihu.madeindz.work'
+            window.location.href = 'login.html'
           }
           if (myIndexBottomLefttiwenflag) {
             myIndexBottomLefttiwenflag = 0
@@ -268,7 +268,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
               const ul = myIndexBottomLefttiwen.querySelector('ul')
               for (let i = 0; i < res.message.length; i++) {
                 let li = document.createElement('li')
-                li.innerHTML = '<div><a href="http://zhihu.madeindz.work/html/issue.html" onclick="tiaozhuan(' + res.message[i].ID + ')">' + res.message[i].title + '</a></div>' + '<div>' + res.message[i].CreatedAt + '</div>'
+                li.innerHTML = '<div><a href="issue.html" onclick="tiaozhuan(' + res.message[i].ID + ')">' + res.message[i].title + '</a></div>' + '<div>' + res.message[i].CreatedAt + '</div>'
                 ul.appendChild(li)
               }
             }
@@ -286,7 +286,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
     } else if (i == 4) {
       myIndexBottomLeftwenzhang.style.display = 'block'
       //查自己发布的文章
-      fetch('https://gogo.madeindz.work:443/api/article/articlesubmited', {
+      fetch('http://43.136.232.175:3920/api/article/articlesubmited', {
         method: 'get',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -303,7 +303,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
                 const ul = myIndexBottomLeftwenzhang.querySelector('ul')
                 for (let i = 0; i < res.message.length; i++) {
                   let li = document.createElement('li')
-                  li.innerHTML = '<div><a href="https://zhihu.madeindz.work/html/ariticle.html" onclick="tiaozhuanwenzhang(' + res.message[i].ID + ')">' + res.message[i].title + '</a></div>' + '<div>' + res.message[i].CreatedAt + '</div>'
+                  li.innerHTML = '<div><a href="ariticle.html" onclick="tiaozhuanwenzhang(' + res.message[i].ID + ')">' + res.message[i].title + '</a></div>' + '<div>' + res.message[i].CreatedAt + '</div>'
                   ul.appendChild(li)
                 }
               }
@@ -326,7 +326,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
     } else if (i == 7) {
       myIndexBottomLeftshoucang.style.display = 'block'
       //查自己的收藏夹
-      fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
+      fetch('http://43.136.232.175:3920/api/collection/seemyfavorites', {
         method: 'get',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -343,7 +343,7 @@ for (let i = 0; i < myIndexBottomLeftTopLi.length; i++) {
                 const ul = myIndexBottomLeftshoucang.querySelector('ul')
                 for (let i = 0; i < res.favorites.length; i++) {
                   let li = document.createElement('li')
-                  li.innerHTML = '<div><a href="https://zhihu.madeindz.work/html/shoucang.html" onclick="runshoucang(' + res.favorites[i].ID + ')">' + res.favorites[i].favoritesname + '</a></div>' + res.favorites[i].describe + '<div><a href="javascript:;" id="myIndexremoveshoucang" onclick="removeshoucang(' + res.favorites[i].ID + ')">删除</a></div>'
+                  li.innerHTML = '<div><a href="shoucang.html" onclick="runshoucang(' + res.favorites[i].ID + ')">' + res.favorites[i].favoritesname + '</a></div>' + res.favorites[i].describe + '<div><a href="javascript:;" id="myIndexremoveshoucang" onclick="removeshoucang(' + res.favorites[i].ID + ')">删除</a></div>'
                   ul.appendChild(li)
                 }
               }

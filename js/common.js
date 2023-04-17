@@ -28,7 +28,7 @@ function runissue(ID) {
 //获取渲染样式
 const commonimg = document.querySelector('.commonimg')
 //获取用户信息
-fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
+fetch('http://43.136.232.175:3920/api/user/getuserinformation', {
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -40,7 +40,7 @@ fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
       alert('登录过期')
       localStorage.removeItem('token')
       localStorage.removeItem('username')
-      window.location.href = 'https://zhihu.madeindz.work'
+      window.location.href = 'login.html'
     }
     if (res.information.headphoto != '') {
       commonimg.src = res.information.headphoto
@@ -111,11 +111,11 @@ document.body.addEventListener('click', () => {
 tuichu.addEventListener('click', () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
-  window.location.href = 'https://zhihu.madeindz.work/'
+  window.location.href = 'login.html'
 })
 //跳转主页事件
 myIndex.addEventListener('click', () => {
-  window.location.href = 'https://zhihu.madeindz.work/html/myIndex.html'
+  window.location.href = 'myIndex.html'
 })
 //打开提问界面
 tiwen.addEventListener('click', () => {
@@ -149,7 +149,7 @@ sendIssue.addEventListener('click', () => {
     let formdata = new FormData()
     formdata.append('title', headtiwentop.value.trim())
     formdata.append('message', headtiwenbottom.value.trim())
-    fetch('https://gogo.madeindz.work:443/api/qa/qcreate', {
+    fetch('http://43.136.232.175:3920/api/qa/qcreate', {
       method: 'post',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -251,7 +251,7 @@ search.addEventListener('focus', () => {
       searchul.style.height = 50 + 30 * long + 'px'
     }
     if (search.value.trim() != '') {
-      let url = 'https://gogo.madeindz.work:443/api/search/searchtitle?message=' + search.value.trim()
+      let url = 'http://43.136.232.175:3920/api/search/searchtitle?message=' + search.value.trim()
       fetch(url, {
         method: 'get',
       })
@@ -268,7 +268,7 @@ search.addEventListener('focus', () => {
               searchul.style.height = 50 + 30 * long + 50 * res.questions.length + 'px'
               for (let i = 0; i < res.questions.length; i++) {
                 let li = document.createElement('li')
-                li.innerHTML = '<a href="https://zhihu.madeindz.work/html/issue.html" onclick="runissue(' + res.questions[i].ID + ')">' + res.questions[i].title + '</a>'
+                li.innerHTML = '<a href="issue.html" onclick="runissue(' + res.questions[i].ID + ')">' + res.questions[i].title + '</a>'
                 searchOl.appendChild(li)
               }
             } else {
@@ -291,7 +291,7 @@ search.addEventListener('focus', () => {
 searchbtn.addEventListener('click', () => {
   if (search.value.trim() != '') {
     localStorage.setItem('search', search.value.trim())
-    window.location.href = 'https://zhihu.madeindz.work/html/search.html'
+    window.location.href = 'search.html'
   }
 })
 //关闭搜索

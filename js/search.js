@@ -11,7 +11,7 @@ const searchLeft = document.querySelector('.searchLeft')
 const searchLeftBottom = document.querySelector('.searchLeftBottom')
 const searchLeftBottomUL = searchLeftBottom.querySelector('ul')
 window.addEventListener('load', () => {
-  let url = 'https://gogo.madeindz.work:443/api/search/searchall?message=' + localStorage.getItem('search')
+  let url = 'http://43.136.232.175:3920/api/search/searchall?message=' + localStorage.getItem('search')
   fetch(url, {
     method: 'get',
     headers: {
@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
               }
             }
 
-            li.innerHTML = '<div><a href="http://zhihu.madeindz.work/html/issue.html" onclick="goissue(' + res.questions[i].ID + ')">' + newtitle + '</a></div><div><a href="http://zhihu.madeindz.work/html/issue.html" onclick="goissue(' + res.questions[i].ID + ')">' + newmessage + '</a></div>'
+            li.innerHTML = '<div><a href="issue.html" onclick="goissue(' + res.questions[i].ID + ')">' + newtitle + '</a></div><div><a href="issue.html" onclick="goissue(' + res.questions[i].ID + ')">' + newmessage + '</a></div>'
             searchLeftBottomUL.appendChild(li)
           }
         }

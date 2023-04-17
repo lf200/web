@@ -9,7 +9,7 @@ function praisewenti(ID, i) {
   let formdata = new FormData()
   console.log(ID)
   formdata.append('id', ID)
-  fetch('https://gogo.madeindz.work:443/api/praise/praisequestion', {
+  fetch('http://43.136.232.175:3920/api/praise/praisequestion', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -37,7 +37,7 @@ function hatewenti(ID, i) {
   formdata.append('id', ID)
   const zantong = document.querySelectorAll('.zantong')
   const alreadyzantong = document.querySelectorAll('.alreadyzantong')
-  fetch('https://gogo.madeindz.work:443/api/praise/cancelpraisequestion', {
+  fetch('http://43.136.232.175:3920/api/praise/cancelpraisequestion', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -64,7 +64,7 @@ let sum = []
 async function searchpraise(ID) {
   let formdata = new FormData()
   formdata.append('id', ID)
-  await fetch('https://gogo.madeindz.work:443/api/seepraisequestion', {
+  await fetch('http://43.136.232.175:3920/api/seepraisequestion', {
     method: 'post',
     body: formdata,
   })
@@ -82,7 +82,7 @@ async function checkdianzan(ID, i) {
   console.log('id', ID)
   const zantong = document.querySelectorAll('.zantong')
   const alreadyzantong = document.querySelectorAll('.alreadyzantong')
-  let url = 'https://gogo.madeindz.work:443/api/praise/judgepraisequestion?id=' + ID
+  let url = 'http://43.136.232.175:3920/api/praise/judgepraisequestion?id=' + ID
   fetch(url, {
     method: 'get',
     headers: {
@@ -130,7 +130,7 @@ if (localStorage.getItem('token')) {
   //渲染界面
   window.addEventListener('load', () => {
     //随机问题
-    fetch('https://gogo.madeindz.work:443/api/qa/randquestions', {
+    fetch('http://43.136.232.175:3920/api/qa/randquestions', {
       method: 'get',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -144,7 +144,7 @@ if (localStorage.getItem('token')) {
           for (let i = 0; i < res.random.length; i++) {
             await searchpraise(res.random[i].ID)
             let li = document.createElement('li')
-            li.innerHTML = '<a href="http://zhihu.madeindz.work/html/issue.html" onclick="localID(' + res.random[i].ID + ')">' + res.random[i].title + '</a><div><button class="zantong" onclick="praisewenti(' + res.random[i].ID + ',' + i + ')">赞同 ' + sum[i] + '</button><button class="alreadyzantong" onclick="hatewenti(' + res.random[i].ID + ',' + i + ')" >已赞同 ' + sum[i] + '</button></div>'
+            li.innerHTML = '<a href="issue.html" onclick="localID(' + res.random[i].ID + ')">' + res.random[i].title + '</a><div><button class="zantong" onclick="praisewenti(' + res.random[i].ID + ',' + i + ')">赞同 ' + sum[i] + '</button><button class="alreadyzantong" onclick="hatewenti(' + res.random[i].ID + ',' + i + ')" >已赞同 ' + sum[i] + '</button></div>'
             indexLeftBodyBottomUl.appendChild(li)
             await checkdianzan(res.random[i].ID, i)
           }
@@ -156,9 +156,9 @@ if (localStorage.getItem('token')) {
   })
   //跳转写文章界面
   rightBodyCenterwenzhang.addEventListener('click', () => {
-    window.location.href = 'http://zhihu.madeindz.work/html/writeariticle.html'
+    window.location.href = 'writeariticle.html'
   })
 } else {
   alert('登录过期')
-  window.location.href = 'http://zhihu.madeindz.work/'
+  window.location.href = 'login.html'
 }

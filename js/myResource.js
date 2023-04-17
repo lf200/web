@@ -1,5 +1,5 @@
 //获取用户信息
-fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
+fetch('http://43.136.232.175:3920/api/user/getuserinformation', {
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -11,7 +11,7 @@ fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
       alert('登录过期')
       localStorage.removeItem('token')
       localStorage.removeItem('username')
-      window.location.href = 'https://zhihu.madeindz.work'
+      window.location.href = 'login.html'
     }
     if (res.information.headphoto != '') {
       myResourceBodyTopdivimg.src = res.information.headphoto
@@ -73,7 +73,7 @@ myResourceProtects[0].addEventListener('click', (e) => {
   }
   let formdata = new FormData()
   formdata.append('username', myResourceUsername_.value.trim())
-  fetch('https://gogo.madeindz.work:443/api/user/informationmodify', {
+  fetch('http://43.136.232.175:3920/api/user/informationmodify', {
     method: 'put',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -87,7 +87,7 @@ myResourceProtects[0].addEventListener('click', (e) => {
       if (res.status == '200') {
         localStorage.removeItem('username')
         localStorage.removeItem('token')
-        window.location.href = 'https://zhihu.madeindz.work/'
+        window.location.href = 'login.html'
         history.go(0)
       }
     })
@@ -111,7 +111,7 @@ myResourceProtects[1].addEventListener('click', (e) => {
   }
   let formdata = new FormData()
   formdata.append('gender', gender)
-  fetch('https://gogo.madeindz.work:443/api/user/informationmodify', {
+  fetch('http://43.136.232.175:3920/api/user/informationmodify', {
     method: 'put',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -138,7 +138,7 @@ myResourceProtects[2].addEventListener('click', (e) => {
   e.preventDefault()
   let formdata = new FormData()
   formdata.append('sign', myResourcejianjie_.value)
-  fetch('https://gogo.madeindz.work:443/api/user/informationmodify', {
+  fetch('http://43.136.232.175:3920/api/user/informationmodify', {
     method: 'put',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -171,7 +171,7 @@ myResourceProtects[3].addEventListener('click', (e) => {
     formdata.append('newpassword', myResourcepassword_.value)
     formdata.append('confirm', myResourcenewpassword_.value)
     formdata.append('code', myResourceCode_.value)
-    fetch('https://gogo.madeindz.work:443/api/user/changepassword', {
+    fetch('http://43.136.232.175:3920/api/user/changepassword', {
       method: 'put',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -192,7 +192,7 @@ myResourceProtects[3].addEventListener('click', (e) => {
 //获取验证码
 myResourceGetcode.addEventListener('click', (e) => {
   e.preventDefault()
-  fetch('https://gogo.madeindz.work:443/api/user/getcode', {
+  fetch('http://43.136.232.175:3920/api/user/getcode', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -257,7 +257,7 @@ myResourceimg.addEventListener('change', () => {
     console.log(ev.target.result)
     formdata.append('headphoto', ev.target.result)
     console.log(ev.target.result)
-    fetch('https://gogo.madeindz.work:443/api/user/informationmodify', {
+    fetch('http://43.136.232.175:3920/api/user/informationmodify', {
       method: 'put',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

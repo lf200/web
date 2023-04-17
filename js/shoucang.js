@@ -2,7 +2,7 @@ if (localStorage.getItem('shoucangID') != null) {
   let path = (window.location.hash = '#' + localStorage.getItem('shoucangID'))
 } else {
   alert('非正常访问')
-  window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+  window.location.href = 'home.html'
 }
 window.addEventListener('hashchange', () => {
   let newpath = window.location.hash.substring(1)
@@ -34,7 +34,7 @@ const shoucangBodyRight = document.querySelector('.shoucangBodyRight')
 const shoucangBodyRightBottom = document.querySelector('.shoucangBodyRightBottom')
 const shoucangBodyRightBottomUl = shoucangBodyRightBottom.querySelector('ul')
 // 获取渲染信息
-fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
+fetch('http://43.136.232.175:3920/api/collection/seemyfavorites', {
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -58,7 +58,7 @@ fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
   })
 //获取收藏内容
 window.addEventListener('load', () => {
-  let url = 'https://gogo.madeindz.work:443/api/collection/seefavorites?id=' + localStorage.getItem('shoucangID')
+  let url = 'http://43.136.232.175:3920/api/collection/seefavorites?id=' + localStorage.getItem('shoucangID')
   fetch(url, {
     method: 'get',
     headers: {
@@ -79,7 +79,7 @@ window.addEventListener('load', () => {
             console.log(res.collections[i].article_id)
             if (!res.collections[i].article_id) {
               console.log('id', res.collections[i].answer_id)
-              let URl = 'https://gogo.madeindz.work/api/qa/getquestionfromanswer?id=' + res.collections[i].answer_id
+              let URl = 'http://43.136.232.175:3920/api/qa/getquestionfromanswer?id=' + res.collections[i].answer_id
               fetch(URl, {
                 method: 'get',
                 headers: {
@@ -89,14 +89,14 @@ window.addEventListener('load', () => {
                 .then((res1) => res1.json())
                 .then((res1) => {
                   let li = document.createElement('li')
-                  li.innerHTML = '<div><a href="http://zhihu.madeindz.work/html/issue.html" onclick="goissue(' + res1.question.ID + ')">' + res1.question.title + '</a></div>' + res1.question.message
+                  li.innerHTML = '<div><a href="issue.html" onclick="goissue(' + res1.question.ID + ')">' + res1.question.title + '</a></div>' + res1.question.message
                   shoucangBodyLeftBottomBottomUl.appendChild(li)
                 })
                 .catch((err) => {
                   console.log(err)
                 })
             } else {
-              let URL = 'https://gogo.madeindz.work:443/api/article/seearticleinformation?id=' + res.collections[i].article_id + '&secret=123456'
+              let URL = 'http://43.136.232.175:3920/api/article/seearticleinformation?id=' + res.collections[i].article_id + '&secret=123456'
               fetch(URL, {
                 method: 'get',
                 headers: {
@@ -106,7 +106,7 @@ window.addEventListener('load', () => {
                 .then((res1) => res1.json())
                 .then((res1) => {
                   let li = document.createElement('li')
-                  li.innerHTML = '<div><a href="http://zhihu.madeindz.work/html/ariticle.html" onclick="goarticle(' + res1.question.ID + ')">' + res1.question.title + '</a></div>'
+                  li.innerHTML = '<div><a href="ariticle.html" onclick="goarticle(' + res1.question.ID + ')">' + res1.question.title + '</a></div>'
                   shoucangBodyLeftBottomBottomUl.appendChild(li)
                 })
                 .catch((err) => {

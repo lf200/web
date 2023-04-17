@@ -2,7 +2,7 @@ if (localStorage.getItem('wenzhangID') != null) {
   let path = (window.location.hash = '#' + localStorage.getItem('wenzhangID'))
 } else {
   alert('非正常访问')
-  window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+  window.location.href = 'home.html'
 }
 window.addEventListener('hashchange', () => {
   let newpath = window.location.hash.substring(1)
@@ -12,7 +12,7 @@ window.addEventListener('hashchange', () => {
 let touxiangs = []
 //获取图片
 async function ariticletouxiang(username) {
-  let url = 'https://gogo.madeindz.work:443/api/user/getuserheadphoto?username=' + username
+  let url = 'http://43.136.232.175:3920/api/user/getuserheadphoto?username=' + username
   await fetch(url, {
     method: 'get',
     headers: {
@@ -33,7 +33,7 @@ let sumarticle
 async function searchpraise(ID) {
   let formdata = new FormData()
   formdata.append('id', ID)
-  await fetch('https://gogo.madeindz.work:443/api/seepraisearticle', {
+  await fetch('http://43.136.232.175:3920/api/seepraisearticle', {
     method: 'post',
     body: formdata,
   })
@@ -51,7 +51,7 @@ function zantongarticle(ID) {
   const alreadyzantong = document.querySelector('.alreadyzantong')
   let formdata = new FormData()
   formdata.append('id', ID)
-  fetch('https://gogo.madeindz.work:443/api/praise/praisearticle', {
+  fetch('http://43.136.232.175:3920/api/praise/praisearticle', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -77,7 +77,7 @@ function hatezantong(ID) {
   formdata.append('id', ID)
   const zantong = document.querySelector('.zantong')
   const alreadyzantong = document.querySelector('.alreadyzantong')
-  fetch('https://gogo.madeindz.work:443/api/praise/cancelpraisearticle', {
+  fetch('http://43.136.232.175:3920/api/praise/cancelpraisearticle', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -101,7 +101,7 @@ function hatezantong(ID) {
 function checkdianzan(ID) {
   const zantong = document.querySelector('.zantong')
   const alreadyzantong = document.querySelector('.alreadyzantong')
-  let url = 'https://gogo.madeindz.work:443/api/praise/judgepraisearticle?id=' + ID
+  let url = 'http://43.136.232.175:3920/api/praise/judgepraisearticle?id=' + ID
   fetch(url, {
     method: 'get',
     headers: {
@@ -139,7 +139,7 @@ const ariticleblack = document.querySelector('.ariticleblack')
 //渲染
 window.addEventListener('load', () => {
   //查看文章信息
-  let ariticleURL = 'https://gogo.madeindz.work:443/api/article/seearticleinformation?id=' + localStorage.getItem('wenzhangID') + '&secret=123456'
+  let ariticleURL = 'http://43.136.232.175:3920/api/article/seearticleinformation?id=' + localStorage.getItem('wenzhangID') + '&secret=123456'
   fetch(ariticleURL, {
     method: 'get',
     headers: {
@@ -152,7 +152,7 @@ window.addEventListener('load', () => {
         ariticleBodyTitle.innerHTML = res.question.title
         ariticleBodyCenter.innerHTML = '<a href="javascript:;">' + res.question.Articler + '</a>'
         //判断是否被收藏
-        let Url = 'https://gogo.madeindz.work:443/api/collection/judgearticleinfavorites?id=' + localStorage.getItem('wenzhangID')
+        let Url = 'http://43.136.232.175:3920/api/collection/judgearticleinfavorites?id=' + localStorage.getItem('wenzhangID')
         fetch(Url, {
           method: 'get',
           headers: {
@@ -196,7 +196,7 @@ window.addEventListener('load', () => {
       let formdata = new FormData()
       formdata.append('id', localStorage.getItem('wenzhangID'))
       formdata.append('message', ariticleBodyBottomComent.value.trim())
-      fetch('https://gogo.madeindz.work:443/api/article/createarticlecomment', {
+      fetch('http://43.136.232.175:3920/api/article/createarticlecomment', {
         method: 'post',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -213,7 +213,7 @@ window.addEventListener('load', () => {
     }
   })
   //获取用户信息
-  fetch('https://gogo.madeindz.work:443/api/user/getuserinformation', {
+  fetch('http://43.136.232.175:3920/api/user/getuserinformation', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -225,7 +225,7 @@ window.addEventListener('load', () => {
         alert('登录过期')
         localStorage.removeItem('token')
         localStorage.removeItem('username')
-        window.location.href = 'https://zhihu.madeindz.work'
+        window.location.href = 'login.html'
       }
       if (res.information.headphoto != '') {
         ariticleimg.src = res.information.headphoto
@@ -241,7 +241,7 @@ function openshoucang(ID, ...fv) {
   ariticleblack.style.display = 'block'
   ariticleshoucang.style.display = 'block'
   //渲染收藏界面
-  fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
+  fetch('http://43.136.232.175:3920/api/collection/seemyfavorites', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -281,7 +281,7 @@ function startshoucang(sID, aID) {
   let formdata = new FormData()
   formdata.append('favorites_id', sID)
   formdata.append('article_id', aID)
-  fetch('https://gogo.madeindz.work:443/api/collection/addarticle', {
+  fetch('http://43.136.232.175:3920/api/collection/addarticle', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -302,7 +302,7 @@ function endshoucang(sID, aID) {
   let formdata = new FormData()
   formdata.append('favorites_id', sID)
   formdata.append('article_id', aID)
-  fetch('https://gogo.madeindz.work:443/api/collection/deletearticle', {
+  fetch('http://43.136.232.175:3920/api/collection/deletearticle', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),

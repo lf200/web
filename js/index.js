@@ -153,7 +153,7 @@ duanxin.addEventListener('click', () => {
       let timer = 180
       let formdata = new FormData()
       formdata.append('phonenumber', phonenumber)
-      fetch('https://gogo.madeindz.work:443/api/getcode', {
+      fetch('http://43.136.232.175:3920/api/getcode', {
         method: 'post',
         body: formdata,
       })
@@ -189,7 +189,7 @@ duanxin.addEventListener('click', () => {
       let timer = 180
       let formdata = new FormData()
       formdata.append('phonenumber', phonenumber)
-      fetch('https://gogo.madeindz.work:443/api/getcode', {
+      fetch('http://43.136.232.175:3920/api/getcode', {
         method: 'post',
         body: formdata,
       })
@@ -238,7 +238,7 @@ registerbtn.addEventListener('click', (e) => {
   formdata.append('phonenumber', phonenumber)
   formdata.append('username', username)
   formdata.append('password', password)
-  fetch('https://gogo.madeindz.work:443/api/register', {
+  fetch('http://43.136.232.175:3920/api/register', {
     method: 'post',
     body: formdata,
   })
@@ -275,7 +275,7 @@ registerbtn.addEventListener('click', (e) => {
 })
 
 if (localStorage.getItem('token')) {
-  window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+  window.location.href = 'home.html'
 } else {
   //电话号验证码登录
   loginOR.addEventListener('click', (e) => {
@@ -287,7 +287,7 @@ if (localStorage.getItem('token')) {
     let formdata = new FormData()
     formdata.append('phonenumber', phonenumber)
     formdata.append('code', code)
-    fetch('https://gogo.madeindz.work:443/api/phonelogin', {
+    fetch('http://43.136.232.175:3920/api/phonelogin', {
       method: 'post',
       body: formdata,
     })
@@ -296,7 +296,7 @@ if (localStorage.getItem('token')) {
         if (res.status == 200) {
           localStorage.setItem('token', res.data.token)
           localStorage.setItem('username', res.username)
-          window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+          window.location.href = 'home.html'
         } else {
           falseyanzhengma.style.display = 'block'
           yanzhengma.addEventListener('focus', () => {
@@ -323,7 +323,7 @@ if (localStorage.getItem('token')) {
       let formdata = new FormData()
       formdata.append('email', email)
       formdata.append('password', password)
-      fetch('https://gogo.madeindz.work:443/api/emaillogin', {
+      fetch('http://43.136.232.175:3920/api/emaillogin', {
         method: 'post',
         body: formdata,
       })
@@ -333,7 +333,7 @@ if (localStorage.getItem('token')) {
           if (res.status == 200) {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('username', res.username)
-            window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+            window.location.href = 'home.html'
           } else {
             if (res.message == "Email doesn't exists") {
               noemail.style.display = 'block'
@@ -357,7 +357,7 @@ if (localStorage.getItem('token')) {
       let formdata = new FormData()
       formdata.append('phonenumber', phonenumber)
       formdata.append('password', password)
-      fetch('https://gogo.madeindz.work:443/api/phonepasswordlogin', {
+      fetch('http://43.136.232.175:3920/api/phonepasswordlogin', {
         method: 'post',
         body: formdata,
       })
@@ -366,7 +366,7 @@ if (localStorage.getItem('token')) {
           if (res.status == 200) {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('username', res.username)
-            window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+            window.location.href = 'home.html'
           } else {
             if (res.message == "PhoneNumber doesn't exists~") {
               nophone.style.display = 'block'

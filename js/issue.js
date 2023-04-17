@@ -3,7 +3,7 @@ function startshoucang(sID, aID) {
   let formdata = new FormData()
   formdata.append('favorites_id', sID)
   formdata.append('answer_id', aID)
-  fetch('https://gogo.madeindz.work:443/api/collection/addcollection', {
+  fetch('http://43.136.232.175:3920/api/collection/addcollection', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -24,7 +24,7 @@ function endshoucang(sID, aID) {
   let formdata = new FormData()
   formdata.append('favorites_id', sID)
   formdata.append('answer_id', aID)
-  fetch('https://gogo.madeindz.work:443/api/collection/deletecollection', {
+  fetch('http://43.136.232.175:3920/api/collection/deletecollection', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -45,7 +45,7 @@ function shoucang(ID, ...fv) {
   issueblack.style.display = 'block'
   issueshoucang.style.display = 'block'
   //渲染收藏界面
-  fetch('https://gogo.madeindz.work:443/api/collection/seemyfavorites', {
+  fetch('http://43.136.232.175:3920/api/collection/seemyfavorites', {
     method: 'get',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -79,7 +79,7 @@ if (localStorage.getItem('ID') != null) {
   let path = (window.location.hash = '#' + localStorage.getItem('ID'))
 } else {
   alert('非正常访问')
-  window.location.href = 'https://zhihu.madeindz.work/html/home.html'
+  window.location.href = 'home.html'
 }
 window.addEventListener('hashchange', () => {
   let newpath = window.location.hash.substring(1)
@@ -93,7 +93,7 @@ let touxiangs = []
 async function searchpraise(ID, username) {
   let formdata = new FormData()
   formdata.append('id', ID)
-  fetch('https://gogo.madeindz.work:443/api/seepraiseanswer', {
+  fetch('http://43.136.232.175:3920/api/seepraiseanswer', {
     method: 'post',
     body: formdata,
   })
@@ -105,7 +105,7 @@ async function searchpraise(ID, username) {
     .catch((err) => {
       console.log(err)
     })
-  let URL = 'https://gogo.madeindz.work:443/api/user/getuserheadphoto?username=' + username
+  let URL = 'http://43.136.232.175:3920/api/user/getuserheadphoto?username=' + username
   await fetch(URL, {
     method: 'get',
     headers: {
@@ -123,7 +123,7 @@ function zantong(ID, i) {
   const alreadyzantonganswer = document.querySelectorAll('.alreadyzantonganswer')
   let formdata = new FormData()
   formdata.append('id', ID)
-  fetch('https://gogo.madeindz.work:443/api/praise/praiseanswer', {
+  fetch('http://43.136.232.175:3920/api/praise/praiseanswer', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -150,7 +150,7 @@ function hatezantong(ID, i) {
   formdata.append('id', ID)
   const zantonganswer = document.querySelectorAll('.zantonganswer')
   const alreadyzantonganswer = document.querySelectorAll('.alreadyzantonganswer')
-  fetch('https://gogo.madeindz.work:443/api/praise/cancelpraiseanswer', {
+  fetch('http://43.136.232.175:3920/api/praise/cancelpraiseanswer', {
     method: 'delete',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -175,7 +175,7 @@ function hatezantong(ID, i) {
 async function checkdianzan(ID, i) {
   const zantonganswer = document.querySelectorAll('.zantonganswer')
   const alreadyzantonganswer = document.querySelectorAll('.alreadyzantonganswer')
-  let url = 'https://gogo.madeindz.work:443/api/praise/judgepraiseanswer?id=' + ID
+  let url = 'http://43.136.232.175:3920/api/praise/judgepraiseanswer?id=' + ID
   await fetch(url, {
     method: 'get',
     headers: {
@@ -224,7 +224,7 @@ const issueBottomRight = document.querySelector('.issueBottomRight')
 function startComments(i) {
   issueblack.style.display = 'block'
   issueblackComments.style.display = 'block'
-  let url = 'https://gogo.madeindz.work:443/api/qa/seequestioninformation?id=' + localStorage.getItem('ID') + '&secret=123456'
+  let url = 'http://43.136.232.175:3920/api/qa/seequestioninformation?id=' + localStorage.getItem('ID') + '&secret=123456'
   fetch(url, {
     method: 'get',
     headers: {
@@ -242,7 +242,7 @@ function startComments(i) {
             let formdata = new FormData()
             formdata.append('id', res.question.Answers[i].ID)
             formdata.append('message', issueblackMyComment_.value.trim())
-            fetch('https://gogo.madeindz.work:443/api/qa/acomment', {
+            fetch('http://43.136.232.175:3920/api/qa/acomment', {
               method: 'post',
               headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -295,7 +295,7 @@ issuebianjiqiTopbtns[8].addEventListener('click', () => {
   let formdata = new FormData()
   formdata.append('question_id', localStorage.getItem('ID'))
   formdata.append('message', issuebianjiqiBottom.innerHTML)
-  fetch('https://gogo.madeindz.work:443/api/qa/acreate', {
+  fetch('http://43.136.232.175:3920/api/qa/acreate', {
     method: 'post',
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -317,7 +317,7 @@ issuebianjiqiTopbtns[8].addEventListener('click', () => {
 //渲染页面
 window.addEventListener('load', () => {
   //查看问题信息
-  let url = 'https://gogo.madeindz.work:443/api/qa/seequestioninformation?id=' + localStorage.getItem('ID') + '&secret=123456'
+  let url = 'http://43.136.232.175:3920/api/qa/seequestioninformation?id=' + localStorage.getItem('ID') + '&secret=123456'
   fetch(url, {
     method: 'get',
     headers: {
@@ -339,7 +339,7 @@ window.addEventListener('load', () => {
             console.log(touxiangs)
             let shoucangflag
             //判断是否收藏
-            let URl = 'https://gogo.madeindz.work:443/api/collection/judgeanswerinfavorites?id=' + res.question.Answers[i].ID
+            let URl = 'http://43.136.232.175:3920/api/collection/judgeanswerinfavorites?id=' + res.question.Answers[i].ID
             fetch(URl, {
               method: 'get',
               headers: {
