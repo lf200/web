@@ -9,7 +9,7 @@
 
 #### [	前端项目部署服务器地址](http://zhihu.madeindz.work/)
 
-#### 	[后端部署地址](https://gogo.madeindz.work/)
+#### 	[后端部署地址](https//43.136.232.175:3920)
 
 #### 			[前端Github仓库地址]
 
